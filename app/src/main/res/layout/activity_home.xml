@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_grad"
+    tools:context=".HomeActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="@dimen/dp_40"
+        android:textColor="@color/white"
+        android:text="@string/travelappname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_120"
+        android:fontFamily="@font/mont_light"/>
+
+    <ImageView
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_alignLeft="@+id/title"
+        android:layout_marginLeft="-70dp"
+        android:alpha="0.4"
+        android:layout_alignBottom="@+id/title"
+        android:src="@drawable/ic_directions_walk_black_24dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:layout_below="@+id/title"
+        android:id="@+id/go_btn"
+        android:layout_marginTop="@dimen/dp_150"
+        android:layout_marginRight="@dimen/dp_40"
+        android:layout_marginLeft="@dimen/dp_40">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_grad"
+            android:alpha="0.3"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/mont_light"
+            android:textSize="@dimen/sp_24"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/btn_go"/>
+    </RelativeLayout>
+
+</RelativeLayout>
