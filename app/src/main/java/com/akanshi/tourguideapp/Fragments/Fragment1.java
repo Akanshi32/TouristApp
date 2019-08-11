@@ -1,14 +1,22 @@
 package com.akanshi.tourguideapp.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
+import com.akanshi.tourguideapp.Adapter.EventsAdapter;
 import com.akanshi.tourguideapp.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,6 +92,31 @@ public class Fragment1 extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        ArrayList<String> eventslist = new ArrayList<String>();
+        eventslist.add("Comedy Show");
+        eventslist.add("Ladies Night");
+        eventslist.add("Saturday Night Party");
+        eventslist.add("Sunday Marathon");
+        eventslist.add("Night Trek");
+        eventslist.add("Trek - Skandagiri");
+        eventslist.add("Stand Up Comedy");
+        eventslist.add("Comedy Nights");
+        eventslist.add("Sunburn with the stars");
+
+        // This is the array adapter, it takes the context of the activity as a
+        // first parameter, the type of list view as a second parameter and your
+        // array as a third parameter.
+
+        ListView events_list = getView().findViewById(R.id.events_list);
+        EventsAdapter libraryAdapter = new EventsAdapter(getContext(), eventslist);
+        events_list.setAdapter(libraryAdapter);
+
     }
 
     @Override

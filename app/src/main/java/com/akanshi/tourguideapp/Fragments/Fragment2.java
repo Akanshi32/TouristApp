@@ -3,12 +3,17 @@ package com.akanshi.tourguideapp.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.akanshi.tourguideapp.Adapter.EventsAdapter;
 import com.akanshi.tourguideapp.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,6 +78,31 @@ public class Fragment2 extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        ArrayList<String> spotslist = new ArrayList<String>();
+        spotslist.add("HAL Museum");
+        spotslist.add("Ulsoor Lake");
+        spotslist.add("Wonder La");
+        spotslist.add("Snow World");
+        spotslist.add("Night Trek");
+        spotslist.add("Mantri Square Mall");
+        spotslist.add("Pheonix Mall");
+        spotslist.add("Mangalore");
+        spotslist.add("Nandi Hills");
+
+        // This is the array adapter, it takes the context of the activity as a
+        // first parameter, the type of list view as a second parameter and your
+        // array as a third parameter.
+
+        ListView spots_list = getView().findViewById(R.id.tourspots_list);
+        EventsAdapter libraryAdapter = new EventsAdapter(getContext(), spotslist);
+        spots_list.setAdapter(libraryAdapter);
+
     }
 
     @Override

@@ -7,8 +7,13 @@
 
     <!-- TODO: Update blank fragment layout -->
     <ListView
+        android:id="@+id/tourspots_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginRight="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8">
 
     </ListView>
 
