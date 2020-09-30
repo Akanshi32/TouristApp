@@ -11,9 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.akanshi.tourguideapp.Adapter.EventsAdapter;
 import com.akanshi.tourguideapp.R;
+import com.akanshi.tourguideapp.WebGoogleMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,9 +115,24 @@ public class Fragment1 extends Fragment {
         // first parameter, the type of list view as a second parameter and your
         // array as a third parameter.
 
-        ListView events_list = getView().findViewById(R.id.events_list);
+        final ListView events_list = getView().findViewById(R.id.events_list);
         EventsAdapter libraryAdapter = new EventsAdapter(getContext(), eventslist);
         events_list.setAdapter(libraryAdapter);
+
+        events_list.setClickable(true);
+
+        events_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object o = events_list.getItemAtPosition(position);
+                String str=(String)o; //As you are using Default String Adapter
+                Toast.makeText(getActivity(),str,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), WebGoogleMap.class);
+                intent.putExtra("keyword", str);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
