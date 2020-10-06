@@ -1,6 +1,7 @@
 package com.akanshi.tourguideapp.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +9,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.akanshi.tourguideapp.Adapter.EventsAdapter;
 import com.akanshi.tourguideapp.R;
+import com.akanshi.tourguideapp.WebGoogleMap;
 
 import java.util.ArrayList;
 
@@ -99,9 +103,24 @@ public class Fragment2 extends Fragment {
         // first parameter, the type of list view as a second parameter and your
         // array as a third parameter.
 
-        ListView spots_list = getView().findViewById(R.id.tourspots_list);
+        final ListView spots_list = getView().findViewById(R.id.tourspots_list);
         EventsAdapter libraryAdapter = new EventsAdapter(getContext(), spotslist);
         spots_list.setAdapter(libraryAdapter);
+
+        spots_list.setClickable(true);
+
+        spots_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object o = spots_list.getItemAtPosition(position);
+                String str=(String)o; //As you are using Default String Adapter
+                Toast.makeText(getActivity(),str,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), WebGoogleMap.class);
+                intent.putExtra("keyword", str);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
